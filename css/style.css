@@ -1,0 +1,86 @@
+.body {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.body .heroBanner h1 {
+  font-size: 50px;
+  font-weight: 600;
+  margin: 5px 0px;
+  color: #ff9132;
+
+}
+
+.body .heroBanner p {
+  text-align: center;
+  font-size: 19px;
+  color: #333;
+}
+
+.body form {
+  width: 100%;
+}
+
+.body .form {
+  position: relative;
+}
+
+.body .form__email {
+  position: absolute;
+  transition: 0.4s;
+}
+
+.body .form__password {
+  transition: 0.5s;
+  transform: translateX(200%);
+
+}
+
+.body .form__emailActive {
+  transform: translateX(-200%);
+}
+
+.body .form__passwordActive {
+  transform: translateX(0%);
+}
+
+.body input {
+  display: block;
+  width: 88%;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 13px 20px;
+  outline: none;
+  font-size: 20px;
+}
+
+.body input::placeholder {
+  text-align: center;
+}
+
+
+button {
+  width: 100%;
+  border: 1px solid #F27D16;
+  background-color: #F27D16;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+  font-weight: 600;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+    text-align: center;
+    display:none;
+}
