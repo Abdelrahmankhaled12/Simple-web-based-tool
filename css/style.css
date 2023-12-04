@@ -140,3 +140,8 @@ video {
     transition: 0.5s;
     opacity: 0;
 }
+
+.toolButton {
+  padding: 25px;
+  font-size: 55px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tool Ai</title>
+    <!-- File CSS Main -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Font AweSome -->
+    <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="body">
+        <!-- Start Camera -->
+        <div class="videoImage">
+            <video id="videoElement" autoplay></video>
+            <div class="image" id="image">
+            </div>
+            <button class="refresh" id="refresh">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+        <!-- End Camera -->
+        <p style="font-size: 30px;">Click a picture of the Ingredients section of any food packaging</p>
+        <button class="mainButton toolButton" id="captureButton">Take Picture</button>
+        <button class="mainButton toolButton" id="buttonCallApi">Tell me Whats-In-It?</button>
+    </div>
+    <!-- File Script Js  -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
