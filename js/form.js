@@ -15,7 +15,7 @@ formEmail.addEventListener("submit" ,(e) => {
 formPassword.addEventListener("submit" , (e) => {
     e.preventDefault();
     if(inputEmail.value === "admin@admin.com"  && inputPassword.value === "123456789") {
-        window.location.href = "../project.html"
+        window.location.href = "project.html"
     }else {
         inputEmail.value = "";
         inputPassword.value = "";
