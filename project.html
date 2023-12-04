@@ -16,7 +16,9 @@
             <video id="videoElement" autoplay></video>
             <div class="image" id="image">
             </div>
-            <button class="refresh" id="refresh"><i class="fa-solid fa-rotate-right"></i></button>
+            <button class="refresh" id="refresh">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
         </div>
         <p style="font-size: 34px;">Click a picture of the Ingredients section of any food packaging</p>
         <button class="mainButton" style="padding: 25px; font-size: 55px;" id="captureButton">Take Picture</button>
@@ -60,11 +62,11 @@
             document.getElementById("image").appendChild(capturedImage);
             captureButton.style.display = "none"
             buttonCallApi.style.display = "block"
-            refresh.style.display = "block"
+            refresh.style.opacity = "1"
             refresh.addEventListener("click", () => {
                 captureButton.style.display = "block"
                 buttonCallApi.style.display = "none"
-                refresh.style.display = "none"
+                refresh.style.opacity = "0"
                 document.getElementById("img").remove()
             })
         });

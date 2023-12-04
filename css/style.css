@@ -1,3 +1,12 @@
+/* font google */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/* font google */
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .body {
   height: 70vh;
   display: flex;
@@ -8,16 +17,31 @@
   overflow: hidden;
 }
 
-.body .heroBanner h1 {
-  font-size: 50px;
+.mainButton {
+  width: 100%;
+  border: 1px solid #f27d16;
+  background-color: #f27d16;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: 0.5s;
   font-weight: 600;
-  margin: 5px 0px;
+}
+
+
+/* START INDEX PAGE  */
+.body .heroBanner h1 {
+  font-size: 58px;
+  font-weight: 600;
+  margin:0px;
   color: #ff9132;
+  font-family: 'Itim', cursive;
 }
 
 .body .heroBanner p {
   text-align: center;
-  font-size: 19px;
+  font-size: 17px;
   color: #333;
 }
 
@@ -36,11 +60,11 @@
 
 .body .form__password {
   transition: 0.5s;
-  transform: translateX(200%);
+  transform: translateX(1000%);
 }
 
 .body .form__emailActive {
-  transform: translateX(-200%);
+  transform: translateX(-1000%);
 }
 
 .body .form__passwordActive {
@@ -63,18 +87,6 @@
   text-align: center;
 }
 
-.mainButton {
-  width: 100%;
-  border: 1px solid #f27d16;
-  background-color: #f27d16;
-  color: white;
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 5px;
-  transition: 0.5s;
-  font-weight: 600;
-}
-
 .error {
   color: red;
   font-weight: 600;
@@ -82,10 +94,13 @@
   display: none;
 }
 
+/* END INDEX PAGE  */
+/* START TOOL PAGE  */
 .videoImage {
   position: relative;
   width: 100%;
   height: 80%;
+  border-radius: 15px;
 }
 
 .image {
@@ -122,5 +137,6 @@ video {
     width: 100px;
     height: 100px;
     border:1px solid #f27d16;
-    display:none;
+    transition: 0.5s;
+    opacity: 0;
 }
