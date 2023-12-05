@@ -154,7 +154,7 @@ video {
   height: 100px;
   border: 1px solid #f27d16;
   transition: 0.5s;
-  opacity:0;
+  opacity: 0;
 }
 
 .toolButton {
@@ -180,36 +180,61 @@ video {
   color: #333333db;
 }
 
+.styleItem {
+  box-shadow: 0 0 10px #0000001a;
+  padding: 30px 20px;
+  margin: 40px 0px;
+  border-radius: 10px;
+}
+
 .styleItem p {
   font-size: 24px;
   font-weight: 600;
-  color: #777777ab;
+  color: #ff9132;
   margin: 35px 0px 15px;
 }
 
 .styleItem ul {
-  display: flex;
-  font-size: 35px;
-  justify-content: space-between;
+  font-size: 25px;
   list-style: none;
   padding: 0;
   margin: 0px;
-  border-bottom: 1px solid #00000038;
   padding-bottom: 30px;
 }
 
 .styleItem ul li {
-  border: 1px solid #0000001c;
-  width: 100%;
-  padding: 40px 15px;
+  padding: 20px 55px;
+  color: #777777ab;
+  position: relative;
 }
+
+.styleItem ul li::before {
+  content: "\f057";
+  font-family: "fontawesome";
+  position: absolute;
+  font-size: 45px;
+  left: 0px;
+  top: 25px;
+  color:red;
+}
+
+.styleItem ul li.active::before {
+  content: "\f058";
+  color:lime;
+}
+
+.styleItem ul li.content::before {
+  content: "\f0a9";
+  color:lime;
+}
+
 
 .styleItem ul li.active {
-  background-color: lime;
-  color: white;
 }
 
-.item_8 ul li {
-  background-color: #ff0000c9;
-  color: white;
+.item_8 ul li:before {
+  content: "\f7ba";
 }
+
+
+
