@@ -3,6 +3,8 @@ const video = document.getElementById('videoElement');
 const captureButton = document.getElementById('captureButton');
 const buttonCallApi = document.getElementById('buttonCallApi');
 const refresh = document.getElementById('refresh');
+const returnButton = document.getElementById('return');
+
 
 // Access the camera and stream the video
 navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
@@ -46,6 +48,22 @@ captureButton.addEventListener('click', function () {
         document.getElementById("par_click").style.display = "none"
         document.getElementById("section_proTip").style.display = "block"
 
+        setTimeout(()=> {
+            buttonCallApi.innerHTML = "Result"
+            document.getElementById("section_proTip").style.display = "none"
+            document.getElementById("result").style.display = "block";
+            returnButton.style.opacity = 1;
+        },5000)
+
+        returnButton.addEventListener("click", ()=> {
+            buttonCallApi.innerHTML = "Tell me Whats-In-It?"
+            captureButton.style.display = "block"
+            buttonCallApi.style.display = "none"
+            returnButton.style.opacity = "0"
+            document.getElementById("img").remove()
+            document.getElementById("result").style.display = "none";
+
+        })
 
     })
 });
