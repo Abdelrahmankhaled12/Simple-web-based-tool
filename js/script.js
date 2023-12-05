@@ -62,6 +62,8 @@ captureButton.addEventListener('click', function () {
             returnButton.style.opacity = "0"
             document.getElementById("img").remove()
             document.getElementById("result").style.display = "none";
+            document.getElementById("par_click").style.display = "block"
+
 
         })
 

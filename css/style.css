@@ -194,47 +194,62 @@ video {
   margin: 35px 0px 15px;
 }
 
-.styleItem ul {
+.styleItem_1 ul {
   font-size: 25px;
   list-style: none;
   padding: 0;
   margin: 0px;
   padding-bottom: 30px;
+  display:flex;
 }
 
-.styleItem ul li {
-  padding: 20px 55px;
-  color: #777777ab;
+.styleItem_1 ul li {
   position: relative;
+  width: 90%;
+  background-color: #77777775;
+  color: #fff;
+  padding: 35px;
+  margin: 0px 10px;
+  border-radius: 25px;
+  font-size: 39px;
+  text-align: center;
+  font-weight: 600;
 }
 
-.styleItem ul li::before {
-  content: "\f057";
-  font-family: "fontawesome";
-  position: absolute;
-  font-size: 45px;
-  left: 0px;
-  top: 25px;
-  color:red;
+.styleItem_2 ul {
+  font-size: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  padding-bottom: 30px;
+  display:flex;
 }
 
-.styleItem ul li.active::before {
-  content: "\f058";
-  color:lime;
+.styleItem_2 ul li {
+  position: relative;
+  width: 90%;
+  background-color: #ff000082;
+  color: #fff;
+  padding: 35px;
+  margin: 0px 10px;
+  border-radius: 25px;
+  font-size: 39px;
+  text-align: center;
+  font-weight: 600;
 }
 
-.styleItem ul li.content::before {
-  content: "\f0a9";
-  color:lime;
+li.green {
+  background-color:#00d900 !important;
 }
 
-
-.styleItem ul li.active {
+li.red {
+  background-color:red !important;
 }
 
-.item_8 ul li:before {
-  content: "\f7ba";
+.item_5 li {
+  font-size:30px !important;
 }
 
-
-
+.item_3 li {
+  margin:15px 0px;
+}
