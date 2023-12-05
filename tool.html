@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="body">
+    <div style="padding: 10px 20px;">
         <!-- Start Camera -->
         <div class="videoImage">
             <video id="videoElement" autoplay></video>
@@ -22,9 +22,19 @@
             </button>
         </div>
         <!-- End Camera -->
-        <p style="font-size: 30px;">Click a picture of the Ingredients section of any food packaging</p>
+        <p style="font-size: 30px;" id="par_click">Click a picture of the Ingredients section of any food packaging</p>
         <button class="mainButton toolButton" id="captureButton">Take Picture</button>
         <button class="mainButton toolButton" id="buttonCallApi">Tell me Whats-In-It?</button>
+        <div class="section_proTip" id="section_proTip">
+            <p class="par_proTip">While our AI-scientists take a hard <br>
+                look at that… </p>
+            <div class="protip">
+                Swap white rice for quinoa.
+                It's a complete protein and
+                rich in fibre, keeping you full
+                and satisfied.
+            </div>
+        </div>
     </div>
     <!-- File Script Js  -->
     <script src="./js/script.js"></script>

@@ -39,4 +39,13 @@ captureButton.addEventListener('click', function () {
         refresh.style.opacity = "0"
         document.getElementById("img").remove()
     })
+
+    buttonCallApi.addEventListener("click",()=> {
+        buttonCallApi.innerHTML = "Analysing…"
+        refresh.style.opacity = "0"
+        document.getElementById("par_click").style.display = "none"
+        document.getElementById("section_proTip").style.display = "block"
+
+
+    })
 });
