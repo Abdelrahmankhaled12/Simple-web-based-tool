@@ -223,11 +223,12 @@ video {
   margin: 0px;
   padding-bottom: 30px;
   display:flex;
+  flex-wrap: wrap;
 }
 
 .styleItem_2 ul li {
   position: relative;
-  width: 90%;
+  width: 22%;
   background-color: #ff000082;
   color: #fff;
   padding: 35px;
@@ -236,7 +237,9 @@ video {
   font-size: 39px;
   text-align: center;
   font-weight: 600;
+  margin: 10px 0px;
 }
+
 
 li.green {
   background-color:#00d900 !important;
@@ -244,6 +247,10 @@ li.green {
 
 li.red {
   background-color:red !important;
+}
+
+li.yellow {
+  background-color:#dfdf00 !important;
 }
 
 .item_5 li {
