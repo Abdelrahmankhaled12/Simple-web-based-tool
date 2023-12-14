@@ -166,6 +166,10 @@ video {
   display: none;
 }
 
+.section_proTip h3 span {
+  color:#ff9132;
+}
+
 .par_proTip {
   font-size: 40px;
   color: #777;

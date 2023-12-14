@@ -85,7 +85,7 @@ captureButton.addEventListener('click', function () {
         document.getElementById("section_proTip").style.display = "block"
 
         setTimeout(() => {
-            buttonCallApi.innerHTML = "Result"
+            buttonCallApi.innerHTML = "Here are the Results"
             document.getElementById("section_proTip").style.display = "none"
             document.getElementById("result").style.display = "block";
             returnButton.style.opacity = 1;
@@ -141,7 +141,7 @@ function showResult(result) {
         </ul>
     </div>
     <div class="item_3 styleItem">
-        <p>It contains the following potential allergens: </p>
+        <p>What about additives and preservatives? </p>
         <ul>
             <li>${result.additives_preservaties}</li>
             <li>${result.additives_preservaties_impact}</li>
@@ -172,7 +172,7 @@ function showResult(result) {
         </ul>
     </div>
     <div class="item_7 styleItem">
-        <p>It contains the following potential allergens: </p>
+        <p>What are the health benefits of this item ? </p>
         <ul>
             <li class="content">${result.health_benefits}</li>
         </ul>
@@ -193,6 +193,15 @@ function showResult(result) {
             <li class=${result.environment_sustainability.toLowerCase() === "safe" ? "green" : ""}>Safe</li>
         </ul>
     </div>    
+    <div class="item_3 styleItem">
+        <p>The above results are based on the following ingredients we got from the pic you shared: </p>
+        <ul>
+            <li>Ingredient 1</li>
+            <li>Ingredient 2</li>
+            <li>Ingredient 3</li>
+            <li>Ingredient 4</li>
+        </ul>
+    </div>
     `
     resultSection.append(div)
 }
