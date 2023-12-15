@@ -1,35 +1,32 @@
-// Get Elements 
+// URL API
+const FETCH_TIP = 'http://127.0.0.1:5000/fetchTip';
+const UPLOAD_IMAGE = 'http://127.0.0.1:5000/uploadScreenshot';
+
+// Get Data From LocalStorage
+const userData = JSON.parse(localStorage.getItem('Data'));
+
+// Check Login Or Not
+if (userData === null) {
+    window.location.href = '../index.html';
+}
+
+// ACCESS DATA
+let data = {
+    access_token: userData.access_token,
+    username: userData.username
+};
+
+// Get Elements
 const video = document.getElementById('videoElement');
 const captureButton = document.getElementById('captureButton');
 const buttonCallApi = document.getElementById('buttonCallApi');
 const refresh = document.getElementById('refresh');
 const returnButton = document.getElementById('return');
-const resultSection = document.getElementById("result")
-x = {
-    "item_type": "Vegetarian",
-    "allergens": [
-        "Milk",
-        "Wheat",
-        "Peanuts",
-        "Almonds",
-        "Soy"
-    ], //<<Max 5
-    "additives_preservaties": "Chemicals present are Emulsifier - E471, Stabilizer - GMS, Color (Beta Carotene), Emulsifier - E322",
-    "additives_preservaties_impact": "Generally recognized as safe for consumption in regulated proportions",
-    "ayurvedic_classification": "Tamsik",
-    "acidic_alkaline_classification": "Highly acidic",
-    "gut_bacteria": "Not so friendly",
-    "health_benefits": "This item is more of a dessert, rich in energy but lacking in essential nutrients. It does contain milk which is a source of calcium and proteins.",
-    "health_conditions": [
-        "Diabetes",
-        "High cholesterol",
-        "Lactose intolerance"
-    ],// <<Max 3
-    "environment_sustainability": "Neutral"
-}
+const resultSection = document.getElementById('result');
 
 // Access the camera and stream the video
-navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+navigator.mediaDevices
+    .getUserMedia({ video: { facingMode: 'environment' } })
     .then(function (stream) {
         video.srcObject = stream;
     })
@@ -43,10 +40,8 @@ captureButton.addEventListener('click', function () {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
     // Convert the captured image to base64 format
     const imageData = canvas.toDataURL('image/png');
-    console.log('Captured Image:', imageData);
 
     // Here you can send imageData to a server or perform further actions
     // For example, display the captured image on the page:
@@ -57,7 +52,7 @@ captureButton.addEventListener('click', function () {
     captureButton.style.display = "none"
     buttonCallApi.style.display = "block"
     refresh.style.opacity = "1"
-    
+
 
     // In Case Click Button Refresh
     refresh.addEventListener("click", () => {
@@ -71,10 +66,21 @@ captureButton.addEventListener('click', function () {
         document.getElementById("img").remove()
     })
 
+    fetch(FETCH_TIP, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.access_token}`
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(dataTip => {
+            document.getElementById("proTipPar").innerHTML = dataTip.tip;
+        })
+
 
     // In Case Click Button Tell me Whats-In-It?
     buttonCallApi.addEventListener("click", () => {
-        // 
         buttonCallApi.style.pointerEvents = "none"
         // Change Text Button
         buttonCallApi.innerHTML = "Analysing…"
@@ -83,19 +89,35 @@ captureButton.addEventListener('click', function () {
         document.getElementById("par_click").style.display = "none"
         // Show Pro Tip
         document.getElementById("section_proTip").style.display = "block"
+        // Convert the captured image to a Blob
+        canvas.toBlob(function (blob) {
+            const formData = new FormData();
+            formData.append('access_token', userData.access_token);
+            formData.append('username', userData.username);
+            formData.append('image', blob, 'captured_image.png');
 
-        setTimeout(() => {
-            buttonCallApi.innerHTML = "Here are the Results"
-            document.getElementById("section_proTip").style.display = "none"
-            document.getElementById("result").style.display = "block";
-            returnButton.style.opacity = 1;
-            showResult(x)
-        }, 5000)
-
+            fetch(UPLOAD_IMAGE, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${userData.access_token}`
+                },
+                body: formData
+            })
+                .then(res => res.json())
+                .then(dataResult => {
+                    buttonCallApi.innerHTML = "Here are the Results"
+                    document.getElementById("section_proTip").style.display = "none"
+                    document.getElementById("result").style.display = "block";
+                    returnButton.style.opacity = 1;
+                    showResult(dataResult);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }, 'image/png');
 
         // In Click Button Return
         returnButton.addEventListener("click", () => {
-            // 
             buttonCallApi.style.pointerEvents = "auto";
             // Remove All Elements In Section Result
             resultSection.innerHTML = ""
@@ -112,10 +134,10 @@ captureButton.addEventListener('click', function () {
             // Show paragraph Again
             document.getElementById("par_click").style.display = "block"
         })
-
-
     })
 });
+
+
 
 
 // Add Result In Dom
@@ -196,10 +218,11 @@ function showResult(result) {
     <div class="item_3 styleItem">
         <p>The above results are based on the following ingredients we got from the pic you shared: </p>
         <ul>
-            <li>Ingredient 1</li>
-            <li>Ingredient 2</li>
-            <li>Ingredient 3</li>
-            <li>Ingredient 4</li>
+        ${result.ingredients.map(item => {
+            item = item.replace(/\s/g, '');
+            item = item.slice(0, item.length - 1)
+            return (`<li>${item}</li>`)
+        })}
         </ul>
     </div>
     `
