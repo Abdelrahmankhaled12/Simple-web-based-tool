@@ -11,7 +11,7 @@ const button_formPassword = document.getElementById("button_formPassword")
 
 // in Case User Click Button [Sign in ] after enter Email
 formEmail.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Show Input Password
     formEmail.classList.add("form__emailActive")
     formPassword.classList.add("form__passwordActive")
@@ -26,7 +26,7 @@ formPassword.addEventListener("submit", (e) => {
     };
 
     var jsonData = JSON.stringify(data);
-    
+
     fetch(LOGIN_API, {
         method: 'POST',
         headers: {
@@ -54,4 +54,5 @@ formPassword.addEventListener("submit", (e) => {
             }
         })
 })
+
 
